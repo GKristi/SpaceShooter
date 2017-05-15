@@ -5,24 +5,17 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour {
     public int speed = -5;
 
-
-	// Use this for initialization
+	
 	void Start () {
-
-        Rigidbody2D r2d = GetComponent<Rigidbody2D>();
-        Vector2 vel = r2d.velocity;
-        vel.y = speed;
-        r2d.velocity = vel;
+        Rigidbody2D enemy = GetComponent<Rigidbody2D>();        
+        enemy.velocity = new Vector2(0, speed);
 
         // Make the enemy rotate on itself
-        r2d.angularVelocity = Random.Range(-200, 200);
-
-
+        enemy.angularVelocity = Random.Range(-200, 200);
     }
 
     void OnBecameInvisible()
-    {
-        // Destroy the enemy
+    {        
         Destroy(gameObject);
     }
 
@@ -35,7 +28,6 @@ public class EnemyScript : MonoBehaviour {
             Destroy(gameObject);
             Destroy(obj.gameObject);
             handleDestroy(gameObject);
-
         }
         // If the enemy collided with the spaceship
         if (name == "spaceship")
@@ -44,11 +36,8 @@ public class EnemyScript : MonoBehaviour {
             Destroy(gameObject);
             //handleDestroy(gameObject);
         }
-
     }
 
-
-    // Update is called once per frame
     void Update () {
 		 
 	}

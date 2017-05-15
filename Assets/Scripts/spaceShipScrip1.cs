@@ -6,80 +6,63 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class spaceShipScrip1 : MonoBehaviour {
-
-
+    
     public GameObject bullet;
+
     void start()
     {
         
     }
 
-
-
     private void Update()
     { 
-        Rigidbody2D r2d = GetComponent<Rigidbody2D>();
-        Vector2 vel = r2d.velocity;
-        // Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        Vector3 pos = transform.position;
-        if (Input.GetKey("right"))
+        Rigidbody2D spaceship = GetComponent<Rigidbody2D>();        
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-  
-            if (18 >= pos.x) {
-
-                vel.x = 10;
-                r2d.velocity = vel;
-                
-            } else {
-                vel.x = 0;
-                r2d.velocity = vel;
-            }
-
-        } else if (Input.GetKey("left")) {
-
-            if (pos.x >= -18)
-            {
-                vel.x = -10;
-                r2d.velocity = vel;
-                
-            } else {
-
-                vel.x = 0;
-                r2d.velocity = vel;
-
-            }
-
+            MoveRight(spaceship);      
+        } else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            MoveLeft(spaceship);
         }
         else
         {
-            vel.x = 0;
-            r2d.velocity = vel;
+            stopMoving(spaceship);
         }
 
-        if (Input.GetKeyDown("space"))
-            Instantiate(bullet, transform.position, Quaternion.identity);
-
-    
+        if (Input.GetKeyDown(KeyCode.Space))
+            Instantiate(bullet, transform.position, Quaternion.identity);            
     }
 
-    void OnCollisionExit(Collision collisionInfo)
+    private void MoveRight(Rigidbody2D spaceship)
     {
-        print(gameObject.name + " and " + collisionInfo.collider.name + " are no longer colliding");
+        Vector2 spaceshipPosition = transform.position;        
+        if (18 >= spaceshipPosition.x)
+        {            
+            spaceship.velocity = new Vector2(10, 0);
+        }
+        else
+        {
+            stopMoving(spaceship);
+        }
     }
 
+    private void MoveLeft(Rigidbody2D spaceship)
+    {
+        Vector2 spaceshipPosition = transform.position;        
+        if (spaceshipPosition.x >= -18)
+        {            
+            spaceship.velocity = new Vector2(-10, 0);
+        }
+        else
+        {
+            stopMoving(spaceship);
+        }
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private void stopMoving(Rigidbody2D spaceship)
+    {
+        Vector2 spaceshipPosition = transform.position;        
+        spaceship.velocity = new Vector2(0, 0);
+    } 
 }

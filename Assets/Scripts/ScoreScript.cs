@@ -15,14 +15,11 @@ public class ScoreScript : MonoBehaviour {
     }
 
     void Update() {
-
         text.text = "Score: " + score;
     }
 
     void Hit()
     {
-
         score++;
-
     }
 }
