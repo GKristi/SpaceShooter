@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour {
 
-
     public static int score;
-    Text text; 
+    private Text text; 
   
     void Awake()
     {

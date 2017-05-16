@@ -34,7 +34,7 @@ public class EnemyScript : MonoBehaviour {
         {
             // Destroy itself (the enemy) to keep things simple
             Destroy(gameObject);
-            //handleDestroy(gameObject);
+            handleLife();
         }
     }
 
@@ -45,5 +45,10 @@ public class EnemyScript : MonoBehaviour {
     void handleDestroy(GameObject gameObject) {
         GameObject.Find("Score").SendMessage("Hit");
         Destroy(gameObject);
+    }
+
+    void handleLife()
+    {
+        GameObject.Find("Life").SendMessage("DecreaseLife");  
     }
 }
