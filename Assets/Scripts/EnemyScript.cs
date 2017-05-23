@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
     public int speed = -5;
-
 	
-	void Start () {
+	void Start ()
+    {
         Rigidbody2D enemy = GetComponent<Rigidbody2D>();        
-        enemy.velocity = new Vector2(0, speed);
-
-        // Make the enemy rotate on itself
+        enemy.velocity = new Vector2(0, speed);    
         enemy.angularVelocity = Random.Range(-200, 200);
     }
 
@@ -18,7 +16,6 @@ public class EnemyScript : MonoBehaviour {
     {        
         Destroy(gameObject);
     }
-
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
@@ -36,11 +33,7 @@ public class EnemyScript : MonoBehaviour {
             Destroy(gameObject);
             handleLife();
         }
-    }
-
-    void Update () {
-		 
-	}
+    }    
 
     void handleDestroy(GameObject gameObject) {
         GameObject.Find("Score").SendMessage("Hit");

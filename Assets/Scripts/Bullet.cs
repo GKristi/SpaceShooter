@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bulletScript : MonoBehaviour {
+public class Bullet : MonoBehaviour {
 
     public int speed = 6;
     
-    void Start() {
+    void Start()
+    {
         Rigidbody2D r2d = GetComponent<Rigidbody2D>();               
         r2d.velocity = new Vector2(0, speed);
     }

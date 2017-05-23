@@ -8,7 +8,8 @@ public class LifeScript : MonoBehaviour
     private int life = 100;
     private Text text;
 
-    void Start() {
+    void Start()
+    {
         text = GetComponent<Text>();
     }
 
@@ -21,9 +22,9 @@ public class LifeScript : MonoBehaviour
         if (life > 0)
             life = life - 25;
         else
-            OnGUI(); 
+            gameOver(); 
     }
-    private void OnGUI()
+    private void gameOver()
     {
         if (life <= 0)
             GUI.Label(new Rect(300, 250, 100, 100), "Game Over");
