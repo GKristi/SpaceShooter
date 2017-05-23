@@ -5,14 +5,9 @@ using System;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class spaceShipScrip1 : MonoBehaviour {
+public class Space : MonoBehaviour {
     
     public GameObject bullet;
-
-    void start()
-    {
-        
-    }
 
     private void Update()
     { 
