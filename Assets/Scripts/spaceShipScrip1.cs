@@ -30,7 +30,10 @@ public class spaceShipScrip1 : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
-            Instantiate(bullet, transform.position, Quaternion.identity);            
+            Instantiate(bullet, transform.position, Quaternion.identity);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.LoadLevel("MainMenu");
     }
 
     private void MoveRight(Rigidbody2D spaceship)
